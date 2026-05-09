@@ -3,121 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홈 방탈출 게임</title>
+    <title>홈 방탈출 게임(v0.7)</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 20px; background-color: #f0f8ff; }
-        .stage { display: none; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .stage { display: none; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); line-height: 1.6; }
         .active { display: block; }
-        input { padding: 10px; font-size: 16px; width: 80%; margin-top: 10px; }
-        button { padding: 10px 20px; margin-top: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        input { padding: 10px; font-size: 16px; width: 80%; margin-top: 10px; text-align: center; }
+        button { padding: 10px 20px; margin-top: 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .hint-text { color: #d9534f; font-weight: bold; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <h1>🏠 홈 방탈출 시작!</h1>
 
-    <!-- 1번 문제 -->
     <div id="stage1" class="stage active">
-    <h3>[문제 1] 가장 신나는 날의 아래?</h3>
-    <p>우리 어린이들이 가장 좋아하는 날은 몇 월 몇 일일까?<br>
-       달력에서 그 날짜의 <b>'바로 아래 칸'</b>에 있는 숫자를 입력해봐!
-    </p>
-    <input type="text" id="ans1" placeholder="숫자만 입력하세요">
-    <button onclick="check(1, '12')">확인</button>
-</div>
+        <h3>[문제 1] 가장 신나는 날의 아래?</h3>
+        <p>우리 어린이들이 가장 좋아하는 날은 몇 월 몇 일일까?<br>
+           달력에서 그 날짜의 <b>'바로 아래 칸'</b>에 있는 숫자를 입력해봐!
+        </p>
+        <input type="text" id="ans1" placeholder="숫자만 입력하세요">
+        <button onclick="check(1, '12')">확인</button>
+    </div>
 
-
-    <!-- 2번 문제 -->
     <div id="stage2" class="stage">
         <h3>[문제 2] 거울의 마법</h3>
         <p>거울 앞에 있는 쪽지를 읽고 단어를 입력해!</p>
-        <input type="text" id="ans2">
+        <input type="text" id="ans2" placeholder="정답 입력">
         <button onclick="check(2, '사과')">확인</button>
     </div>
 
-<!-- 3번 문제 (수수께끼 스타일) -->
-<div id="stage3" class="stage">
-    <h3>[문제 3] 누구의 이름일까?</h3>
-    <p style="line-height: 1.6;">
-        "나는 작은 TV가 있는 곳 근처에 숨어있어!<br>
-        나는 <b>100매짜리 '내츄럴 포레스트'</b>이고,<br>
-        너희가 손을 깨끗이 닦을 때 항상 나를 사용하지.<br><br>
-        나의 <b>네 글자 이름</b>은 무엇일까?"
-    </p>
-    <input type="text" id="ans3" placeholder="정답을 입력하세요">
-    <button onclick="check(3, '모나리자')">확인</button>
-</div>
+    <div id="stage3" class="stage">
+        <h3>[문제 3] 누구의 이름일까?</h3>
+        <p>
+            "나는 작은 TV가 있는 곳 근처에 숨어있어!<br>
+            나는 <b>100매짜리 '내츄럴 포레스트'</b>이고,<br>
+            너희가 손을 깨끗이 닦을 때 항상 나를 사용하지.<br><br>
+            나의 <b>네 글자 이름</b>은 무엇일까?"
+        </p>
+        <input type="text" id="ans3" placeholder="네 글자 입력">
+        <button onclick="check(3, '모나리자')">확인</button>
+    </div>
 
-<!-- 4번 문제 (천지인 암호 활용) -->
-<div id="stage4" class="stage">
-    <h3>[문제 4] 숫자 속에 숨겨진 글자</h3>
-    <p style="line-height: 1.6;">
-        물티슈 아래에서 찾은 쪽지를 잘 봐!<br>
-        <b>"8 8 1 2 5 3 1 5"</b><br><br>
+    <div id="stage4" class="stage">
+        <h3>[문제 4] 숫자 속에 숨겨진 글자</h3>
+        <p>
+            물티슈 아래에서 찾은 쪽지를 잘 봐!<br>
+            <b>"8 8 2 1 5 3 1 5"</b><br><br>
+            이 숫자들을 휴대폰 천지인 자판으로<br>
+            순서대로 누르면 나오는 단어는?
+        </p>
+        <input type="text" id="ans4" placeholder="두 글자 단어 입력">
+        <button onclick="check(4, '하늘')">확인</button>
+    </div>
         
-    </p>
-    <input type="text" id="ans4" placeholder="두 글자 단어 입력">
-    <button onclick="check(4, '하늘')">확인</button>
-</div>
-    
-<!-- 5번 문제 (가족사진 & 피그펜 암호) -->
-<div id="stage5" class="stage">
-    <h3>[문제 5] 우리 가족의 마음</h3>
-    <p style="line-height: 1.6;">
-        이번 단서는 가장 소중한 사람들이 모여 있는<br>
-        <b>'가족 사진'</b> 뒤에 숨어있어!<br><br>
-        종이에 그려진 이상한 모양들을 잘 봐.<br>
-        표의 칸 모양과 글자를 하나씩 맞추면 단어가 나와.<br>
-        <b>우리가 서로에게 가장 많이 해줘야 하는 말</b>은 무엇일까?
-    </p>
-    <input type="text" id="ans5" placeholder="두 글자 단어 입력">
-    <button onclick="check(5, '사랑')">확인</button>
-</div>
+    <div id="stage5" class="stage">
+        <h3>[문제 5] 우리 가족의 마음</h3>
+        <p>
+            이번 단서는 가장 소중한 사람들이 모여 있는<br>
+            <b>'가족 사진'</b> 뒤에 숨어있어!<br><br>
+            종이에 그려진 표의 칸 모양과 글자를 하나씩 맞추면 단어가 나와.<br>
+            <b>우리가 서로에게 가장 많이 해줘야 하는 말</b>은 무엇일까?
+        </p>
+        <input type="text" id="ans5" placeholder="두 글자 단어 입력">
+        <button onclick="check(5, '사랑')">확인</button>
+    </div>
 
-<!-- 6번 문제 -->
-<div id="stage6" class="stage">
-    <h3>[문제 6] 사라진 숫자를 찾아라</h3>
-    <p style="line-height: 1.6;">
-        미니달력 아래를 봐!<br>
-        (힌트: 총 5자리의 숫자야)
-    </p>
-    <input type="number" id="ans6" placeholder="5자리 숫자 입력">
-    <!-- 정답 시 7번 장소 힌트를 보여주도록 함수 연결 -->
-    <button onclick="checkStage6()">확인</button> 
-</div>
+    <div id="stage6" class="stage">
+        <h3>[문제 6] 사라진 숫자를 찾아라</h3>
+        <p>
+            미니달력 아래를 봐!<br>
+            (힌트: 총 5자리의 숫자야)
+        </p>
+        <input type="number" id="ans6" placeholder="5자리 숫자 입력">
+        <button onclick="check(6, '41322')">확인</button> 
+    </div>
 
-<!-- 7번 문제 (월별 일수 암호) -->
-<div id="stage7" class="stage">
-    <h3>[문제 7] 숫자의 규칙을 찾아라</h3>
-    <p style="line-height: 1.6;">
-        새로운 쪽지를 찾았구나!<br>
-        네모안의 수는?
-    </p>
-    <input type="number" id="ans7" placeholder="숫자 1개 입력">
-    <button onclick="check(7, '1')">확인</button>
-</div>
+    <div id="stage7" class="stage">
+        <h3>[문제 7] 숫자의 규칙을 찾아라</h3>
+        <p class="hint-text">
+            [다음 장소 힌트]<br>세상에서 가장 큰 코(에어컨)를 찾아봐!
+        </p>
+        <p>
+            새로운 쪽지를 찾았구나!<br>
+            규칙을 찾아서 8번 옆의 네모 안의 수를 맞춰봐.
+        </p>
+        <input type="number" id="ans7" placeholder="숫자 1개 입력">
+        <button onclick="check(7, '1')">확인</button>
+    </div>
     
-    
-    <!-- 마지막 성공 화면 -->
+    <div id="stage8" class="stage">
+        <h3>[문제 8] 냉장고 속의 비밀</h3>
+        <p class="hint-text">
+            [다음 장소 힌트]<br>정말 미안해하는 사람들이 모여 사는 곳(냉장고)을 찾아봐!
+        </p>
+        <p>
+            냉장고 문에 붙어있는 전단지(또는 자석)를 봐!<br>
+            거기에 적힌 전화번호 중 <b>가장 마지막 숫자 4개</b>를 더하면 얼마일까?
+        </p>
+        <input type="number" id="ans8" placeholder="숫자 합계 입력">
+        <button onclick="check(8, '20')">확인</button> 
+    </div>
+
     <div id="clear" class="stage">
-        <h2>🎉 탈출 성공! 🎉</h2>
-        <p>최종 비밀번호는 <b>[ 20260509 ]</b> 야!<br>냉장고를 열어봐!</p>
+        <h2>🎉 1차 탈출 성공! 🎉</h2>
+        <p>임시 비밀번호 획득!<br>마지막 9, 10번 문제를 기다려주세요!</p>
     </div>
 
     <script>
-    function checkStage6() {
-        const userAns = document.getElementById('ans6').value;
-        if (userAns === '41322') {
-            // 넌센스 퀴즈로 장소 안내
-            const hint = "정답이야! 7번 쪽지가 있는 곳을 알려줄게.<br><br>" +
-                        "거실 한구석에 우뚝 서 있어!";
+        function check(stageNum, correctAns) {
+            // 사용자가 입력한 값 (공백 제거)
+            const userAns = document.getElementById('ans' + stageNum).value.trim();
             
-            document.getElementById('location-hint').innerHTML = hint;
-            document.getElementById('stage6').classList.remove('active');
-            document.getElementById('stage7').classList.add('active');
-        } else {
-            alert("땡! 다시 생각해보자!");
+            if (userAns === correctAns) {
+                // 알림창으로 재미있는 메시지 띄우기
+                if (stageNum === 6) {
+                    alert("정답이야! 다음 쪽지는 에어컨 근처에 숨겨뒀어!");
+                } else if (stageNum === 7) {
+                    alert("딩동댕! 다음 단서는 냉장고로 가봐!");
+                } else if (stageNum === 8) {
+                    alert("최고야! 거의 다 왔어!");
+                }
+
+                // 현재 문제 숨기기
+                document.getElementById('stage' + stageNum).classList.remove('active');
+                
+                // 다음 문제 보여주기
+                const nextStage = document.getElementById('stage' + (stageNum + 1));
+                if (nextStage) {
+                    nextStage.classList.add('active');
+                } else {
+                    // 다음 문제가 없으면 클리어 화면 보여주기
+                    document.getElementById('clear').classList.add('active');
+                }
+            } else {
+                alert("땡! 다시 생각해보자!");
+            }
         }
-    }
     </script>
 </body>
 </html>
