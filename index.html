@@ -73,6 +73,29 @@
     <button onclick="check(5, '사랑')">확인</button>
 </div>
 
+<!-- 6번 문제 -->
+<div id="stage6" class="stage">
+    <h3>[문제 6] 사라진 숫자를 찾아라</h3>
+    <p style="line-height: 1.6;">
+        미니달력 아래를 봐!<br>
+        (힌트: 총 5자리의 숫자야)
+    </p>
+    <input type="number" id="ans6" placeholder="5자리 숫자 입력">
+    <!-- 정답 시 7번 장소 힌트를 보여주도록 함수 연결 -->
+    <button onclick="checkStage6()">확인</button> 
+</div>
+
+<!-- 7번 문제 (월별 일수 암호) -->
+<div id="stage7" class="stage">
+    <h3>[문제 7] 숫자의 규칙을 찾아라</h3>
+    <p style="line-height: 1.6;">
+        새로운 쪽지를 찾았구나!<br>
+        네모안의 수는?
+    </p>
+    <input type="number" id="ans7" placeholder="숫자 1개 입력">
+    <button onclick="check(7, '1')">확인</button>
+</div>
+    
     
     <!-- 마지막 성공 화면 -->
     <div id="clear" class="stage">
@@ -81,20 +104,20 @@
     </div>
 
     <script>
-        function check(stageNum, correctAns) {
-            const userAns = document.getElementById('ans' + stageNum).value;
-            if (userAns === correctAns) {
-                document.getElementById('stage' + stageNum).classList.remove('active');
-                const nextStage = document.getElementById('stage' + (stageNum + 1));
-                if (nextStage) {
-                    nextStage.classList.add('active');
-                } else {
-                    document.getElementById('clear').classList.add('active');
-                }
-            } else {
-                alert("땡! 다시 생각해보자!");
-            }
+    function checkStage6() {
+        const userAns = document.getElementById('ans6').value;
+        if (userAns === '41322') {
+            // 넌센스 퀴즈로 장소 안내
+            const hint = "정답이야! 7번 쪽지가 있는 곳을 알려줄게.<br><br>" +
+                        "거실 한구석에 우뚝 서 있어!";
+            
+            document.getElementById('location-hint').innerHTML = hint;
+            document.getElementById('stage6').classList.remove('active');
+            document.getElementById('stage7').classList.add('active');
+        } else {
+            alert("땡! 다시 생각해보자!");
         }
+    }
     </script>
 </body>
 </html>
